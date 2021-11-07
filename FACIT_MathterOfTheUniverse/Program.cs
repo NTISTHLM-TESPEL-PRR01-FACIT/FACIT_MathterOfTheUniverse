@@ -1,35 +1,57 @@
 ﻿using System;
 
-int points = 0;
-int answer = 0;
-string answerString = "";
-bool successful = false;
+Mathter();
 
-Console.WriteLine("Välkommen till mattespelet MATHTER OF THE UNIVERSE!");
 
-Console.WriteLine("x * 6 = 42");
-Console.WriteLine("Vilket värde har x?");
-
-while (successful == false)
+static void Mathter()
 {
+
+  int points = 0;
+  int answer = 0;
+
+  int correctAnswer = 7;
+  int factor = 6;
+  int sum = correctAnswer * factor;
+
+  string answerString = "";
+  bool successful = false;
+
+  Console.WriteLine("Välkommen till mattespelet MATHTER OF THE UNIVERSE!");
+
+  Console.WriteLine($"x * {factor} = {sum}");
+  Console.WriteLine("Vilket värde har x?");
+
+  while (successful == false)
+  {
     answerString = Console.ReadLine();
     successful = int.TryParse(answerString, out answer);
 
     if (!successful)
     {
-        Console.WriteLine("Skriv bara siffror!");
+      Console.WriteLine("Skriv bara siffror!");
     }
-}
+  }
 
-if (answer != 7)
-{
-    Console.WriteLine("Nej! " + answer + " * 6 = " + answer * 6 + ".");
-}
-else
-{
+  if (answer != correctAnswer)
+  {
+    int falseSum = answer * factor;
+    Console.WriteLine($"Nej! {answer} * {factor} = {falseSum}.");
+
+    if (answer < correctAnswer)
+    {
+      Console.WriteLine("Ditt svar var för lågt.");
+    }
+    else if (answer > correctAnswer)
+    {
+      Console.WriteLine("Ditt svar var för högt.");
+    }
+  }
+  else
+  {
     points++;
-    Console.WriteLine("Korrekt! Du får 1 poäng och har nu totalt " + points + " poäng.");
-}
+    Console.WriteLine($"Korrekt! Du får 1 poäng och har nu totalt {points} poäng.");
+  }
 
-Console.WriteLine("Tryck på ENTER för att avsluta.");
-Console.ReadLine();
+  Console.WriteLine("Tryck på ENTER för att avsluta.");
+  Console.ReadLine();
+}
