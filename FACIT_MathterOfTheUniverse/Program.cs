@@ -1,6 +1,4 @@
-﻿using System;
-
-Mathter();
+﻿Mathter();
 
 
 static void Mathter()
